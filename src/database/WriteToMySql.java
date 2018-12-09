@@ -1,21 +1,16 @@
 package database;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import login.LoginController;
 import login.LoginMain;
 import window.Window;
 
-import java.io.IOException;
 import java.sql.*;
 
-import static login.LoginController.alert;
 
 public class WriteToMySql {
 
@@ -23,13 +18,8 @@ public class WriteToMySql {
 
     //    used to connect to database
 
-    //    public static String host = "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7266664";
     public static String host = "jdbc:mysql://remotemysql.com:3306/B6SWh4erqu";
-
-    //    public static String username = "sql7266664";
     public static String username = "B6SWh4erqu";
-
-    //    public static String passwordServer = "FNqm6RgjDU";
     public static String passwordServer = "9yQbvyIdBy";
 
     public static void connection() {
