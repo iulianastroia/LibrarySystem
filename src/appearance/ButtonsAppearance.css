@@ -1,0 +1,22 @@
+/*save and cancel button background+text*/
+.button{
+    -fx-background-color: rgba(71, 96, 255, 0.62);
+    -fx-color-fill:black;
+
+
+}
+
+/*color changes when mouse hovered over buttons*/
+.button:hover{
+    -fx-background-color: rgba(37, 48, 135, 0.93);
+}
+
+.hbox{
+    -fx-background-color: rgba(71, 96, 255, 0.62);
+    -fx-color-fill:black;
+
+
+}
+.hbox:hover{
+    -fx-background-color: rgba(37, 48, 135, 0.93);
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
+
+   <children>
+      <VBox layoutX="65.0" layoutY="44.0" prefHeight="166.0" prefWidth="234.0">
+         <children>
+            <JFXTextArea fx:id="userId" prefHeight="84.0" prefWidth="234.0" promptText="Username" />
+            <JFXTextArea fx:id="passId" layoutX="10.0" layoutY="10.0" prefHeight="76.0" prefWidth="234.0" promptText="Password" />
+         </children>
+      </VBox>
+      <JFXButton fx:id="cancelButton" layoutX="117.0" layoutY="313.0" onAction="#cancelAction" prefHeight="35.0" prefWidth="132.0" stylesheets="/appearance/ButtonsAppearance.css" text="Cancel" />
+      <JFXButton fx:id="registerButton" layoutX="116.0" layoutY="230.0" onAction="#registerAction" prefHeight="35.0" prefWidth="135.0" stylesheets="/appearance/ButtonsAppearance.css" text="Register" />
+      <JFXButton fx:id="loginButton" layoutX="115.0" layoutY="272.0" onAction="#loginAction" prefHeight="35.0" prefWidth="135.0" stylesheets="/appearance/ButtonsAppearance.css" text="Login" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

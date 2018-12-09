@@ -1,0 +1,9 @@
+.menu-bar{
+
+    -fx-background-color: rgba(71, 96, 255, 0.62);
+    -fx-color-fill:black;
+}
+
+.menu-bar:hover{
+    -fx-background-color: rgba(37, 48, 135, 0.93);
+}

@@ -1,0 +1,21 @@
+/*color of header background*/
+.table-view .column-header-background {
+    /*-fx-background-color: #253087;*/
+    -fx-background-color: rgba(37, 48, 135, 0.93);
+
+}
+
+
+
+/*color of header text*/
+.table-view .column-header-background .label {
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+
+}
+
+
+
