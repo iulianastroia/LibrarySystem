@@ -18,7 +18,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-import static database.WriteToMySql.connection;
+//import static database.WriteToMySql.connection;
 import static login.LoginController.alert;
 import static login.LoginController.projectIcon;
 import static login.LoginMain.setStage;
@@ -80,5 +80,4 @@ public class UserLogin implements Initializable {
 //
 //            }
 //        }catch(Exception e){System.out.println("error at send mail");}
-    }
-}
+    }}

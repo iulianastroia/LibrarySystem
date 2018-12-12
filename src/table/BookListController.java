@@ -50,7 +50,7 @@ public class BookListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            WriteToMySql.connection();
+//            WriteToMySql.connection();
             Connection conn = DriverManager.getConnection(WriteToMySql.host, WriteToMySql.username, WriteToMySql.passwordServer);
             String query = "SELECT * FROM test_db";
             ResultSet resultSet = conn.createStatement().executeQuery(query);

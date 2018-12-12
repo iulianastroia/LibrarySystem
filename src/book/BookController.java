@@ -21,7 +21,7 @@ import login.LoginController;
 import login.LoginMain;
 import window.Window;
 
-
+//controller for books.fxml
 public class BookController implements Initializable {
     private Image projectIcon = new Image("https://image.freepik.com/free-icon/open-book_318-62025.jpg");
 
@@ -43,7 +43,7 @@ public class BookController implements Initializable {
     private MenuItem fullScreenId;
 //    Stage stage = (Stage) anchorPane.getScene().getWindow();
 
-   private WriteToMySql writeToMySql;
+    private WriteToMySql writeToMySql;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -109,6 +109,20 @@ public class BookController implements Initializable {
     public void aboutAction(ActionEvent actionEvent) {
         Label aboutLabel = new Label("Welcome to our Library System. You can find your favourite book titles here and you can take them home for 2 weeks. After that time, you can either reserve them longer or return them. Have a pleasant time with us! :)");
         window.Window.showWindow(aboutLabel, projectIcon);
+    }
+
+    public void updateAction(ActionEvent actionEvent) {
+//        try {
+//            WriteToMySql.theQuery("update test_db set author= '" + author.getText() + "',title= '" + title.getText() + " where id= " + id.getText());
+//        } catch (Exception e) {
+//        }
+    }
+
+    public void deleteAction(ActionEvent actionEvent) {
+
+        WriteToMySql.DeleteRowAdmin(id.getText());
+        Label labelDelete=new Label("Book with id "+id.getText()+" deleted successfully.");
+        Window.showWindow(labelDelete,projectIcon);
     }
 }
 

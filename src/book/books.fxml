@@ -12,26 +12,23 @@
 
 <!--@bookAppearanceWindow.css-->
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookController">
     <children>
-        <MenuBar stylesheets="/appearance/MenuAppearance.css" fx:id="menuBar" layoutX="2.0" layoutY="-2.0">
+        <MenuBar fx:id="menuBar" layoutX="2.0" layoutY="-2.0" stylesheets="/appearance/MenuAppearance.css">
             <menus>
                 <Menu mnemonicParsing="false" text="_File">
                     <items>
-                        <MenuItem fx:id="exitId" mnemonicParsing="false" onAction="#exitAction" text="Exit"/>
+                        <MenuItem fx:id="exitId" mnemonicParsing="false" onAction="#exitAction" text="Exit" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="_View">
                     <items>
-                        <MenuItem fx:id="fullScreenId" mnemonicParsing="false" onAction="#fullScreenAction"
-                                  text="Maximize"/>
+                        <MenuItem fx:id="fullScreenId" mnemonicParsing="false" onAction="#fullScreenAction" text="Maximize" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="_Help">
                     <items>
-                        <MenuItem fx:id="aboutId" mnemonicParsing="false" onAction="#aboutAction" text="About"/>
+                        <MenuItem fx:id="aboutId" mnemonicParsing="false" onAction="#aboutAction" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -40,37 +37,31 @@
             <children>
                 <JFXTextArea fx:id="id" labelFloat="true" prefHeight="52.0" prefWidth="319.0" promptText="ID">
                     <opaqueInsets>
-                        <Insets left="10.0" right="10.0" top="20.0"/>
+                        <Insets left="10.0" right="10.0" top="20.0" />
                     </opaqueInsets>
                 </JFXTextArea>
-                <JFXTextArea fx:id="author" labelFloat="true" layoutX="10.0" layoutY="10.0" prefHeight="52.0"
-                             prefWidth="319.0" promptText="Author">
+                <JFXTextArea fx:id="author" labelFloat="true" layoutX="10.0" layoutY="10.0" prefHeight="52.0" prefWidth="319.0" promptText="Author">
                     <opaqueInsets>
-                        <Insets left="10.0" right="10.0" top="20.0"/>
+                        <Insets left="10.0" right="10.0" top="20.0" />
                     </opaqueInsets>
                 </JFXTextArea>
-                <JFXTextArea fx:id="title" labelFloat="true" layoutX="10.0" layoutY="10.0" prefHeight="52.0"
-                             prefWidth="319.0" promptText="Title">
+                <JFXTextArea fx:id="title" labelFloat="true" layoutX="10.0" layoutY="10.0" prefHeight="52.0" prefWidth="319.0" promptText="Title">
                     <opaqueInsets>
-                        <Insets left="10.0" right="10.0" top="20.0"/>
+                        <Insets left="10.0" right="10.0" top="20.0" />
                     </opaqueInsets>
                 </JFXTextArea>
-                <JFXTextArea fx:id="status" labelFloat="true" layoutX="10.0" layoutY="62.0" prefHeight="52.0"
-                             prefWidth="319.0" promptText="Status">
+                <JFXTextArea fx:id="status" labelFloat="true" layoutX="10.0" layoutY="62.0" prefHeight="52.0" prefWidth="319.0" promptText="Status">
                     <opaqueInsets>
-                        <Insets left="10.0" right="10.0" top="20.0"/>
+                        <Insets left="10.0" right="10.0" top="20.0" />
                     </opaqueInsets>
                 </JFXTextArea>
             </children>
         </VBox>
-        <Text layoutX="158.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK" underline="true"/>
-        <Button id="cancelButton" layoutX="97.0" layoutY="398.0" mnemonicParsing="false" onAction="#cancelAction"
-                prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Cancel"/>
-        <Button id="saveButton" graphicTextGap="6.0" layoutX="97.0" layoutY="315.0" mnemonicParsing="false"
-                onAction="#saveAction" prefHeight="24.0" prefWidth="162.0"
-                stylesheets="/appearance/ButtonsAppearance.css" text="Save"/>
-        <Button id="saveButton" fx:id="viewBooks" graphicTextGap="6.0" layoutX="97.0" layoutY="357.0"
-                mnemonicParsing="false" onAction="#viewBooksAction" prefHeight="0.0" prefWidth="162.0"
-                stylesheets="/appearance/ButtonsAppearance.css" text="View Books"/>
+        <Text layoutX="158.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK" underline="true" />
+        <Button id="cancelButton" layoutX="97.0" layoutY="398.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Cancel" />
+        <Button id="saveButton" graphicTextGap="6.0" layoutX="97.0" layoutY="315.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="24.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Save" />
+        <Button id="saveButton" fx:id="viewBooks" graphicTextGap="6.0" layoutX="97.0" layoutY="357.0" mnemonicParsing="false" onAction="#viewBooksAction" prefHeight="0.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="View Books" />
+      <Button fx:id="updateButton" layoutX="133.0" layoutY="274.0" mnemonicParsing="false" onAction="#updateAction" text="Update" />
+      <Button fx:id="deleteButton" layoutX="135.0" layoutY="436.0" mnemonicParsing="false" onAction="#deleteAction" text="Delete" />
     </children>
 </AnchorPane>

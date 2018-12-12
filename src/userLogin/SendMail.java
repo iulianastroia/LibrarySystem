@@ -26,10 +26,10 @@ public class SendMail implements Initializable {
 
     private static void getTableEntry(String email) {
         try {
-            WriteToMySql.connection();
+//            WriteToMySql.connection();
             Connection conn = DriverManager.getConnection(WriteToMySql.host, WriteToMySql.username, WriteToMySql.passwordServer);
 
-            PreparedStatement preparedStatement = (PreparedStatement) conn.prepareStatement("SELECT * FROM `user_db` WHERE `email`=?");
+            PreparedStatement preparedStatement = (PreparedStatement) conn.prepareStatement("SELECT * FROM user_db WHERE email=?");
 
             preparedStatement.setString(1, email);
 
