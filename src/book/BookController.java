@@ -112,17 +112,34 @@ public class BookController implements Initializable {
     }
 
     public void updateAction(ActionEvent actionEvent) {
-//        try {
-//            WriteToMySql.theQuery("update test_db set author= '" + author.getText() + "',title= '" + title.getText() + " where id= " + id.getText());
-//        } catch (Exception e) {
-//        }
+        WriteToMySql.updateBooks(id.getText(), author.getText(), title.getText(), status.getText());
+        if (id.getText().isEmpty())
+            WriteToMySql.alert("Write something into id field");
+        else if (title.getText().isEmpty() && author.getText().isEmpty() && status.getText().isEmpty()) {
+            WriteToMySql.alert("Cannot update book! Change some fields. :)");
+
+        } else {
+//            TODO update book if id is existent!
+            Label labelUpdate = new Label("Book with id \"" + id.getText() + "\" updated successfully.");
+            Window.showWindow(labelUpdate, projectIcon);
+        }
     }
 
     public void deleteAction(ActionEvent actionEvent) {
 
-        WriteToMySql.DeleteRowAdmin(id.getText());
-        Label labelDelete=new Label("Book with id "+id.getText()+" deleted successfully.");
-        Window.showWindow(labelDelete,projectIcon);
+        WriteToMySql.DeleteRowAdmin(id.getText(), title.getText());
+        if (id.getText().isEmpty() && title.getText().isEmpty()) {
+            WriteToMySql.alert("Write something into id or title field");
+        } else if (title.getText().isEmpty()) {
+            Label labelDelete = new Label("Book with id " + id.getText() + " deleted successfully.");
+            Window.showWindow(labelDelete, projectIcon);
+        } else if (id.getText().isEmpty()) {
+            Label labelDelete = new Label("Book with title \"" + title.getText() + "\" deleted successfully.");
+            Window.showWindow(labelDelete, projectIcon);
+        }
+        else {Label labelDelete = new Label("Book deleted successfully.");
+            Window.showWindow(labelDelete, projectIcon);}
+//     TODO   check if book title/id existent in database
     }
 }
 

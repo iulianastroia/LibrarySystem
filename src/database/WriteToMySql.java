@@ -1,5 +1,6 @@
 package database;
 
+import logger.LoggerClass;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -9,28 +10,14 @@ import javafx.stage.Stage;
 import login.LoginMain;
 import window.Window;
 
-import javax.swing.*;
 import java.sql.*;
 
 
 public class WriteToMySql {
 
     static Image projectIcon = new Image("https://image.freepik.com/free-icon/open-book_318-62025.jpg");
-
-    //    used to connect to database
-//    public static String host = "jdbc:mysql://remotemysql.com:3306/B6SWh4erqu";
-//    public static String username = "B6SWh4erqu";
-//    public static String passwordServer = "9yQbvyIdBy";
-
-    //    public static void connection() {
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
-   public static String host = "jdbc:sqlserver://librarysprojectserver.database.windows.net:1433;database=library_db";
-    public  static String username = "libraryadmin";
+    public static String host = "jdbc:sqlserver://librarysprojectserver.database.windows.net:1433;database=library_db";
+    public static String username = "libraryadmin";
     public static String passwordServer = "Librarysystem1";
 
 
@@ -53,13 +40,15 @@ public class WriteToMySql {
         }
     }
 
-    public static void alert() {
+    public static void alert(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(projectIcon); // To add an icon
 
         alert.setHeaderText(null);
-        alert.setContentText("Wrong username or password");
+//        alert.setContentText("Wrong username or password");
+        alert.setContentText(text);
+
         alert.showAndWait();
 
     }
@@ -74,32 +63,38 @@ public class WriteToMySql {
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-//                System.out.println("login successful");
                 Label label = new Label("Login successful!");
                 Window.showWindow(label, projectIcon);
-
                 try {
                     Stage stage = new Stage();
                     Parent root = FXMLLoader.load(getClass().getResource("/book/books.fxml"));
+//                    Parent root = FXMLLoader.load(getClass().getResource("/bookr/books.fxml"));
+
 //                    close login window
                     LoginMain.stage.close();
                     LoginMain.setStage(stage, root);
                     connection.close();
                     resultSet.close();
                 } catch (Exception e) {
-                    System.out.print("Cannot open");
+//                    e.printStackTrace();
+//                    TODO ADD LOGGER TO EVERY EXCEPTION
+                    LoggerClass loggerClass = new LoggerClass();
+                    loggerClass.writeToFile(e);
+//                    END TODO
                 }
 
             } else {
-                alert();
+                alert("Wrong username or password");
             }
 
         } catch (Exception e) {
-            System.out.println("Login fail");
+            e.printStackTrace();
+
+//            System.out.println("Login fail");
         }
     }
 
-//    connect to database to insert data into admin_db(database for admins)
+    //    connect to database to insert data into admin_db(database for admins)
     public static void ConnectionToMySqlAdmin(String user, String password) {
 
         try {
@@ -137,7 +132,8 @@ public class WriteToMySql {
         }
     }
 
-    public static void checkPass() {}
+    public static void checkPass() {
+    }
 
     //    checks login info for user
     public void LoginActionUser(String user, String password) {
@@ -160,45 +156,70 @@ public class WriteToMySql {
                     connection.close();
 //                    TODO
                 } catch (Exception e) {
-                    System.out.print("Cannot open");
+//                    System.out.print("Cannot open");
                     e.printStackTrace();
                 }
 
             } else {
-                alert();
+                alert("Wrong username or password");
             }
             resultSet.close();
             connection.close();
         } catch (Exception e) {
-            System.out.println("Login fail");
+            e.printStackTrace();
+//            System.out.println("Login fail");
         }
     }
 
-
-    public static void DeleteRowAdmin(String id)
-    {
-        try
-        {
+    //delete row by id/title of book
+    public static void DeleteRowAdmin(String id, String title) {
+        try {
             Connection connection = DriverManager.getConnection(host, username, passwordServer);
-            PreparedStatement st = connection.prepareStatement("DELETE FROM test_db WHERE id=?");
-            st.setString(1,id);
-//            st.setString(2,password);
+            PreparedStatement st = connection.prepareStatement("DELETE FROM test_db WHERE id=? or title=?");
 
+            st.setString(1, id);
+            st.setString(2, title);
+
+//TODO check if book is deleted or not
+//            Label deleteLabel = new Label("Entry was deleted.");
+//            Window.showWindow(deleteLabel, projectIcon);
             st.executeUpdate();
             connection.close();
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public static void updateBooks(String id, String author, String title, String status) {
+        try {
+            Connection connection = DriverManager.getConnection(host, username, passwordServer);
+            String sql = "UPDATE  test_db set author = ?,title=?,status=? where id= ? ";
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            st = connection.prepareStatement(sql);
+            st.setString(1, author);
+            st.setString(2, title);
+            st.setString(3, status);
+            st.setString(4, id);
 
 
+//          TODO check if id exists in database
+//            Statement stmt = connection.createStatement();
 
 
+//            TODO
+//            Label updateLabel = new Label("Book with id " + id + " was updated.");
+//            Window.showWindow(updateLabel, projectIcon);
 
+
+            st.executeUpdate();
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String args[]) {
     }
