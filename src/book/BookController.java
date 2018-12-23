@@ -2,6 +2,7 @@ package book;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -101,8 +102,6 @@ public class BookController implements Initializable {
             maximise = false;
             fullScreenId.setText("Maximise");
         }
-
-
     }
 
 
@@ -117,7 +116,14 @@ public class BookController implements Initializable {
             WriteToMySql.alert("Write something into id field");
         else if (title.getText().isEmpty() && author.getText().isEmpty() && status.getText().isEmpty()) {
             WriteToMySql.alert("Cannot update book! Change some fields. :)");
+        } else if (title.getText().isEmpty() || author.getText().isEmpty() || status.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
+//            Label labelWarning = new Label();
+            alert.setContentText("You might want to update the other fields, too. They are currently empty.");
+            alert.showAndWait();
+//            Window.showWindow(labelWarning, projectIcon);
         } else {
 //            TODO update book if id is existent!
             Label labelUpdate = new Label("Book with id \"" + id.getText() + "\" updated successfully.");
@@ -136,9 +142,10 @@ public class BookController implements Initializable {
         } else if (id.getText().isEmpty()) {
             Label labelDelete = new Label("Book with title \"" + title.getText() + "\" deleted successfully.");
             Window.showWindow(labelDelete, projectIcon);
+        } else {
+            Label labelDelete = new Label("Book deleted successfully.");
+            Window.showWindow(labelDelete, projectIcon);
         }
-        else {Label labelDelete = new Label("Book deleted successfully.");
-            Window.showWindow(labelDelete, projectIcon);}
 //     TODO   check if book title/id existent in database
     }
 }

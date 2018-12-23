@@ -27,7 +27,7 @@ public class Window {
         borderPane.setCenter(windowLabel);
 
         // New scene
-        Scene windowScene = new Scene(borderPane, 200, 150);
+        Scene windowScene = new Scene(borderPane, 500, 150);
         windowLabel.prefHeightProperty().bind(windowScene.heightProperty());
 
 

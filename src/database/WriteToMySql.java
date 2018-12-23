@@ -44,11 +44,8 @@ public class WriteToMySql {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(projectIcon); // To add an icon
-
         alert.setHeaderText(null);
-//        alert.setContentText("Wrong username or password");
         alert.setContentText(text);
-
         alert.showAndWait();
 
     }
@@ -214,6 +211,7 @@ public class WriteToMySql {
 
 
             st.executeUpdate();
+            st.close();
             connection.close();
 
         } catch (Exception e) {
