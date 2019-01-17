@@ -7,7 +7,10 @@ import database.WriteToMySql;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import login.LoginController;
+import login.LoginMain;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -21,10 +24,10 @@ public class SendMail implements Initializable {
     JFXButton sendId;
     @FXML
     JFXTextArea textId;
-   private static String pass;
+    private static String pass;
     private static String user;
 
-//    get user and pass from user database
+    //    get user and pass from user database
     private static void getTableEntry(String email) {
         try {
 //            WriteToMySql.connection();
@@ -39,7 +42,7 @@ public class SendMail implements Initializable {
             while (rs.next()) {
                 pass = rs.getString("password");
 //                System.out.println("Pass is: " + pass);
-                user=rs.getString("username");
+                user = rs.getString("username");
 
             }
 
@@ -61,13 +64,22 @@ public class SendMail implements Initializable {
             getTableEntry(email);
 //            System.out.println("pass from send action is: " + pass);
 
-            EmailSend.sendmail(email,pass,user);
+            EmailSend.sendmail(email, pass, user);
         }
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void backButton(ActionEvent actionEvent) throws IOException {
+        LoginController loginController = new LoginController();
+
+        LoginMain.stage.close();
+        loginController.goBackToUserOrAdmin();
+
 
     }
 }

@@ -22,6 +22,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import static database.WriteToMySql.writeLogger;
+
 public class UsersListController implements Initializable {
 
     @FXML
@@ -68,6 +70,8 @@ public class UsersListController implements Initializable {
 //            System.out.println("Exception at reading table data from database");
             Logger.getLogger(UsersListController.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
+            writeLogger(e);
+
         }
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("username"));

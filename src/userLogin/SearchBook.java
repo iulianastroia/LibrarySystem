@@ -89,42 +89,7 @@ public class SearchBook implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
-
-    //    TODO E BUN??
-//    public void checkAvailability(String status, String id) {
-//        try {
-//            Connection conn = DriverManager.getConnection(WriteToMySql.host, WriteToMySql.username, WriteToMySql.passwordServer);
-//            PreparedStatement preparedStatement = (PreparedStatement) conn.prepareStatement("SELECT * FROM test_db WHERE status=? AND id=?");
-//            preparedStatement.setString(1, status);
-//            preparedStatement.setString(2, id);
-//
-//
-//            ResultSet rs = preparedStatement.executeQuery();
-//            while (rs.next()) {
-//                System.out.println(bookStatus.getText());
-//                if (bookStatus.getText() == "Available") {
-//
-//                    WriteToMySql.connectToBorrowTableDB(WriteToMySql.userName, id);
-//                    String setStatus = "Not available";
-//                    WriteToMySql.updateStatusOfBook(id, setStatus);
-//                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                    alert.showAndWait();
-//                } else {
-//                    Alert alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.showAndWait();
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            System.err.println("Got an exception at reading the database table! ");
-//            System.err.println(e.getMessage());
-//        }
-//    }
-//    TODO E BUN??
-
 
 
     public void borrowBook(ActionEvent actionEvent) {
@@ -137,20 +102,24 @@ public class SearchBook implements Initializable {
         Optional<ButtonType> response = alert.showAndWait();
         if (response.get() == ButtonType.OK) {
 //            borrow books
-            if(status.equals("Available")){
-            WriteToMySql.connectToBorrowTableDB(WriteToMySql.userName, id);
-            String setStatus = "Not available";
-            WriteToMySql.updateStatusOfBook(id, setStatus);
+//            if (status.equals("Available")) {
+            if (bookStatus.getText().equals("Available")) {
+                WriteToMySql.connectToBorrowTableDB(WriteToMySql.userName, id);
+                String setStatus = "Not available";
+                WriteToMySql.updateStatusOfBook(id, setStatus);
 
 
-            Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
-            alert1.setContentText("Book "+title+" was borrowed successfully.");
-            alert1.showAndWait();
+                Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+                alert1.setContentText("Book " + title + " was borrowed successfully.");
+                alert1.showAndWait();
 
-            }
-            else{
+            } else if (bookStatus.getText().equals("Not available")) {
                 Alert alert1 = new Alert(Alert.AlertType.ERROR);
-                alert1.setContentText("Book "+title+" is already borrowed.");
+                alert1.setContentText("Book " + title + " is already borrowed.");
+                alert1.showAndWait();
+            } else {
+                Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                alert1.setContentText("Sorry, we do not own this book: '" + title+"'");
                 alert1.showAndWait();
             }
         }

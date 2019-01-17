@@ -15,6 +15,7 @@ import java.sql.*;
 
 public class WriteToMySql {
 
+
     static Image projectIcon = new Image("https://image.freepik.com/free-icon/open-book_318-62025.jpg");
     public static String host = "jdbc:sqlserver://librarysprojectserver.database.windows.net:1433;database=library_db";
     public static String username = "libraryadmin";
@@ -27,7 +28,10 @@ public class WriteToMySql {
 
 //    end for issue book
 
-
+public static void writeLogger(Exception e){
+    LoggerClass loggerClass = new LoggerClass();
+    loggerClass.writeToFile(e);
+}
     //    connect to database to insert data into test_db(database for books)
     public static void ConnectionToMySql(String id, String author, String title, String status) {
 //        connection();
@@ -43,7 +47,8 @@ public class WriteToMySql {
             connect.close();
             System.out.println("Connection established. Database updated :)");
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
         }
     }
 
@@ -82,8 +87,10 @@ public class WriteToMySql {
                 } catch (Exception e) {
 //                    e.printStackTrace();
 //                    TODO ADD LOGGER TO EVERY EXCEPTION
-                    LoggerClass loggerClass = new LoggerClass();
-                    loggerClass.writeToFile(e);
+//                    LoggerClass loggerClass = new LoggerClass();
+//                    loggerClass.writeToFile(e);
+                    writeLogger(e);
+
 //                    END TODO
                 }
 
@@ -93,6 +100,7 @@ public class WriteToMySql {
 
         } catch (Exception e) {
             e.printStackTrace();
+            writeLogger(e);
 
 //            System.out.println("Login fail");
         }
@@ -111,7 +119,9 @@ public class WriteToMySql {
             connect.close();
             System.out.println("Connection established. Database updated :)");
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
@@ -127,7 +137,9 @@ public class WriteToMySql {
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
@@ -140,7 +152,9 @@ public class WriteToMySql {
             connect.close();
             System.out.println("Connection established. Database updated :)");
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
@@ -176,7 +190,9 @@ public class WriteToMySql {
                     resultSet.close();
                     connection.close();
                 } catch (Exception e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
+                    writeLogger(e);
+
                 }
 
             } else {
@@ -185,8 +201,8 @@ public class WriteToMySql {
             resultSet.close();
             connection.close();
         } catch (Exception e) {
-            e.printStackTrace();
-//            System.out.println("Login fail");
+//            e.printStackTrace();
+            writeLogger(e);
         }
     }
 
@@ -206,7 +222,9 @@ public class WriteToMySql {
             connection.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
@@ -236,7 +254,9 @@ public class WriteToMySql {
             connection.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
@@ -252,7 +272,9 @@ public class WriteToMySql {
             connect.close();
             st.close();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
@@ -266,7 +288,9 @@ public class WriteToMySql {
             statement.close();
             connect.close();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            writeLogger(e);
+
         }
     }
 
