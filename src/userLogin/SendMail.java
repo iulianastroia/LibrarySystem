@@ -24,6 +24,7 @@ public class SendMail implements Initializable {
    private static String pass;
     private static String user;
 
+//    get user and pass from user database
     private static void getTableEntry(String email) {
         try {
 //            WriteToMySql.connection();

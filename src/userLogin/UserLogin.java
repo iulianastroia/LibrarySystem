@@ -12,8 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import login.LoginController;
+import login.LoginMain;
 import window.Window;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -47,7 +50,6 @@ public class UserLogin implements Initializable {
         String user = userId.getText();
         String pass = passId.getText();
 
-
         if (user.isEmpty() || pass.isEmpty()) {
             alert();
             return;
@@ -59,25 +61,12 @@ public class UserLogin implements Initializable {
     public void forgotAction(ActionEvent actionEvent) throws Exception {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/userLogin/sendMail.fxml"));
-
+        LoginMain.stage.close();
         setStage(stage, root);
-//        connection();
-//
-//        try {
-//            Connection connection = DriverManager.getConnection(WriteToMySql.host, WriteToMySql.username, WriteToMySql.passwordServer);
-//            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement("SELECT `username`, `password` FROM `admin_db` WHERE `username`=? AND `password`=?");
-//            preparedStatement.setString(1, emailUser);
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            if (resultSet.next()) {
-//                System.out.println("login successful");
-//                Label label = new Label("Login successful!");
-//                Window.showWindow(label, projectIcon);
-//
-//
-//                System.out.println();
-////        EmailSend.sendmail();
-//
-//
-//            }
-//        }catch(Exception e){System.out.println("error at send mail");}
-    }}
+    }
+
+    public void backButton(ActionEvent actionEvent) throws IOException {
+        LoginController loginController=new LoginController();
+        loginController.goBackToUserOrAdmin();
+    }
+}

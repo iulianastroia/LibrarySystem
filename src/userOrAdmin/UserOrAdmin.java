@@ -19,11 +19,9 @@ public class UserOrAdmin {
     Button userButton;
     @FXML
     Button adminButton;
-
-    public void chooseUserOrAdmin(Stage stage, Parent root) {
+    public void chooseUserOrAdmin(Stage stage, Parent root){
         LoginMain.setStage(stage, root);
         LoginMain.stage = stage;
-
 //        close are you user or admin stage
         Stage stage1 = (Stage) anchorPane.getScene().getWindow();
         stage1.close();

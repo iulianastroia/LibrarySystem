@@ -10,9 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import login.LoginController;
 import login.LoginMain;
 import window.Window;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -76,5 +78,10 @@ public class UserRegister implements Initializable {
         Stage stage1 = (Stage) anchorPane.getScene().getWindow();
         stage1.close();
 
+    }
+
+    public void backButton(ActionEvent actionEvent) throws IOException {
+        LoginController loginController=new LoginController();
+        loginController.goBackToUserOrAdmin();
     }
 }

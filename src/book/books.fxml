@@ -12,7 +12,7 @@
 
 <!--@bookAppearanceWindow.css-->
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="book.BookController">
     <children>
         <MenuBar fx:id="menuBar" layoutX="2.0" layoutY="-2.0" stylesheets="/appearance/MenuAppearance.css">
             <menus>
@@ -58,10 +58,12 @@
             </children>
         </VBox>
         <Text layoutX="158.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOOK" underline="true" />
-        <Button id="cancelButton" layoutX="97.0" layoutY="398.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Cancel" />
-        <Button id="saveButton" graphicTextGap="6.0" layoutX="97.0" layoutY="315.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="24.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Save" />
-        <Button id="saveButton" fx:id="viewBooks" graphicTextGap="6.0" layoutX="97.0" layoutY="357.0" mnemonicParsing="false" onAction="#viewBooksAction" prefHeight="0.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="View Books" />
-      <Button fx:id="updateButton" layoutX="98.0" layoutY="274.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="31.0" prefWidth="162.0" text="Update" stylesheets="/appearance/ButtonsAppearance.css"/>
-      <Button fx:id="deleteButton" layoutX="98.0" layoutY="436.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="31.0" prefWidth="162.0" text="Delete" stylesheets="/appearance/ButtonsAppearance.css"/>
+        <Button id="cancelButton" layoutX="98.0" layoutY="357.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Cancel" />
+        <Button id="saveButton" graphicTextGap="6.0" layoutX="97.0" layoutY="315.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Save" />
+        <Button id="saveButton" fx:id="viewBooks" graphicTextGap="6.0" layoutX="97.0" layoutY="397.0" mnemonicParsing="false" onAction="#viewBooksAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="View Books" />
+      <Button fx:id="updateButton" layoutX="98.0" layoutY="274.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Update" />
+      <Button fx:id="deleteButton" layoutX="98.0" layoutY="436.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="Delete" />
+      <Button id="saveButton" fx:id="viewBorrowedBooks" graphicTextGap="6.0" layoutX="99.0" layoutY="474.0" mnemonicParsing="false" onAction="#viewBorrowedBooks" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="View Users" />
+      <Button id="saveButton" fx:id="viewBorrowInfo" graphicTextGap="6.0" layoutX="99.0" layoutY="514.0" mnemonicParsing="false" onAction="#viewBorrowInfo" prefHeight="31.0" prefWidth="162.0" stylesheets="/appearance/ButtonsAppearance.css" text="View Borrowed Info" />
     </children>
 </AnchorPane>

@@ -5,10 +5,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
 import com.jfoenix.controls.JFXTextArea;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,8 +44,9 @@ public class BookController implements Initializable {
     private boolean maximise = false;
     @FXML
     private MenuItem fullScreenId;
-//    Stage stage = (Stage) anchorPane.getScene().getWindow();
-
+    //    Stage stage = (Stage) anchorPane.getScene().getWindow();
+    @FXML
+    private TextField bookTitleInput;
     private WriteToMySql writeToMySql;
 
     @Override
@@ -148,6 +151,24 @@ public class BookController implements Initializable {
         }
 //     TODO   check if book title/id existent in database
     }
+
+    //    view info about users
+    public void viewBorrowedBooks(ActionEvent actionEvent) throws Exception {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/table/userList.fxml"));
+        LoginMain.setStage(stage, root);
+    }
+
+//    view info about borrowed books
+    public void viewBorrowInfo(ActionEvent actionEvent) throws Exception {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/table/borrowList.fxml"));
+        LoginMain.setStage(stage, root);
+
+
+    }
+
+
 }
 
 

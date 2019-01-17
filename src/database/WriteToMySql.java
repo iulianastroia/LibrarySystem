@@ -21,6 +21,13 @@ public class WriteToMySql {
     public static String passwordServer = "Librarysystem1";
 
 
+    //    for issue book
+    public static String userName;
+    public static String userPassword;
+
+//    end for issue book
+
+
     //    connect to database to insert data into test_db(database for books)
     public static void ConnectionToMySql(String id, String author, String title, String status) {
 //        connection();
@@ -108,13 +115,10 @@ public class WriteToMySql {
         }
     }
 
-    //    connect to database to insert data into user_db(database for users)
-    public static void ConnectionToMySqlUser(String user, String password, String phone, String email) {
-//        connection();
 
+    public static void setStringMethodForUser(String user, String password, String phone, String email, PreparedStatement statement) {
         try {
-            Connection connect = DriverManager.getConnection(host, username, passwordServer);
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO user_db(username,password,phone,email)VALUES(?,?,?,?)");
+
             statement.setString(1, user);
             statement.setString(2, password);
             statement.setString(3, phone);
@@ -122,6 +126,17 @@ public class WriteToMySql {
 
             statement.executeUpdate();
             statement.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //    connect to database to insert data into user_db(database for users)
+    public static void ConnectionToMySqlUser(String user, String password, String phone, String email) {
+        try {
+            Connection connect = DriverManager.getConnection(host, username, passwordServer);
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO user_db(username,password,phone,email)VALUES(?,?,?,?)");
+            setStringMethodForUser(user, password, phone, email, statement);
             connect.close();
             System.out.println("Connection established. Database updated :)");
         } catch (SQLException e) {
@@ -129,9 +144,8 @@ public class WriteToMySql {
         }
     }
 
-    public static void checkPass() {
-    }
-
+    //    public static void checkPass() {
+//    }
     //    checks login info for user
     public void LoginActionUser(String user, String password) {
         try {
@@ -139,21 +153,29 @@ public class WriteToMySql {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT username, password FROM user_db WHERE username=? AND password=?");
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, password);
+
+
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 Label label = new Label("Login successful!");
                 Window.showWindow(label, projectIcon);
 
+//                save current user
+                userName = user;
+//                save current user's password
+                userPassword = password;
+
                 try {
-//                    Label labelUser = new Label("Login Successful");
-//                    Window.showWindow(labelUser, projectIcon);
-//TODO code to open login winodow
+//code to open login window and close user/admin window
+                    Stage stageUser = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/userLogin/searchBooks.fxml"));
+                    LoginMain.stage.close();
+                    LoginMain.setStage(stageUser, root);
+
                     preparedStatement.close();
                     resultSet.close();
                     connection.close();
-//                    TODO
                 } catch (Exception e) {
-//                    System.out.print("Cannot open");
                     e.printStackTrace();
                 }
 
@@ -195,10 +217,11 @@ public class WriteToMySql {
             PreparedStatement st = connection.prepareStatement(sql);
 
             st = connection.prepareStatement(sql);
-            st.setString(1, author);
-            st.setString(2, title);
-            st.setString(3, status);
-            st.setString(4, id);
+            setStringMethodForUser(author, title, status, id, st);
+//            st.setString(1, author);
+//            st.setString(2, title);
+//            st.setString(3, status);
+//            st.setString(4, id);
 
 
 //          TODO check if id exists in database
@@ -206,14 +229,42 @@ public class WriteToMySql {
 
 
 //            TODO
-//            Label updateLabel = new Label("Book with id " + id + " was updated.");
-//            Window.showWindow(updateLabel, projectIcon);
 
 
-            st.executeUpdate();
-            st.close();
+//            st.executeUpdate();
+//            st.close();
             connection.close();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void updateStatusOfBook(String id, String status) {
+        try {
+            Connection connect = DriverManager.getConnection(host, username, passwordServer);
+            String sql = "UPDATE  test_db set status=? where id=  ?";
+            PreparedStatement st = connect.prepareStatement(sql);
+            st.setString(1, status);
+            st.setString(2, id);
+            st.executeUpdate();
+            connect.close();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void connectToBorrowTableDB(String borrowUsername, String bookId) {
+        try {
+            Connection connect = DriverManager.getConnection(host, username, passwordServer);
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO borrow_db(borrowUsername,bookId,today,borrowtime)VALUES(?,?,getdate() ,getdate()+14)");
+            statement.setString(1, borrowUsername);
+            statement.setString(2, bookId);
+            statement.executeUpdate();
+            statement.close();
+            connect.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

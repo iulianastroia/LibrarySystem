@@ -1,6 +1,8 @@
 package database;
 
 
+import javafx.scene.control.Alert;
+
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -48,7 +50,14 @@ public class EmailSend {
             transport.connect(host, user, pass);
             transport.sendMessage(msg, msg.getAllRecipients());
             transport.close();
-            System.out.println("Mail sent successfully");
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Mail sent successfully");
+            alert.setContentText("Check your mail for information about your username and password.");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+
+
         } catch (Exception ex) {
             System.out.println(ex);
         }
