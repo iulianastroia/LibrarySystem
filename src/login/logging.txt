@@ -1,0 +1,2 @@
+Dec 13, 2018 7:08:40 PM logger.LoggerClass writeLog
+INFO: java.lang.NullPointerException: Location is required.

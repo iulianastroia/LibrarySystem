@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userLogin.SearchBook">
+   <children>
+      <HBox fx:id="hBox" alignment="CENTER_RIGHT" layoutX="-4.0" layoutY="-3.0" prefHeight="299.0" prefWidth="512.0" style="-fx-background-color: #546AFF;">
+         <children>
+            <VBox alignment="CENTER" prefHeight="299.0" prefWidth="274.0">
+               <children>
+                  <Label text="Search books by title or by author" />
+                  <TextField fx:id="bookTitleInput" onAction="#loadBookInfo" />
+                  <Button mnemonicParsing="false" onAction="#borrowBook" text="Borrow Book" />
+               </children></VBox>
+            <VBox alignment="CENTER" prefHeight="176.0" prefWidth="217.0">
+               <children>
+                  <Text fx:id="bookID" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+                  <Text fx:id="bookAuthor" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" />
+                  <Text fx:id="bookTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+                  <Text fx:id="bookStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
