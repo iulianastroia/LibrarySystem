@@ -15,8 +15,10 @@ import java.util.logging.Logger;
 import database.WriteToMySql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,6 +46,7 @@ public class BorrowListController implements Initializable {
 
     @FXML
     private TableColumn<ModelTableBorrow, String> today;
+
 
     @FXML
     private TableColumn<ModelTableBorrow, String> borrowtime;
@@ -77,4 +80,31 @@ public class BorrowListController implements Initializable {
         tableView.setItems(observableList);
     }
 
+    //    delete user and book when user returns book
+    public void deleteUserAndBook(ActionEvent actionEvent) {
+        try {
+//gets id of selected line from tableView
+            ModelTableBorrow id = tableView.getSelectionModel().getSelectedItem();
+            String userName = id.getBorrowUsername();
+            String idBook = id.getBookId();
+
+            WriteToMySql.deleteUserAndBorrowedBook(idBook);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Successfully deleted");
+            alert.setHeaderText("You have successfully deleted book with id " + idBook + " from user " + userName);
+            alert.showAndWait();
+
+
+//book becomes available when user returns it
+            String setStatus = "Available";
+            WriteToMySql.updateStatusOfBook(idBook, setStatus);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Please select a book to return. ");
+            alert.showAndWait();
+        }
+
+
+    }
 }

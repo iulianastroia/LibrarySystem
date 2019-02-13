@@ -28,13 +28,13 @@ public class WriteToMySql {
 
 //    end for issue book
 
-public static void writeLogger(Exception e){
-    LoggerClass loggerClass = new LoggerClass();
-    loggerClass.writeToFile(e);
-}
+    public static void writeLogger(Exception e) {
+        LoggerClass loggerClass = new LoggerClass();
+        loggerClass.writeToFile(e);
+    }
+
     //    connect to database to insert data into test_db(database for books)
     public static void ConnectionToMySql(String id, String author, String title, String status) {
-//        connection();
         try {
             Connection connect = DriverManager.getConnection(host, username, passwordServer);
             PreparedStatement statement = (PreparedStatement) connect.prepareStatement("INSERT INTO test_db(id,author,title,status)VALUES(?,?,?,?)");
@@ -59,7 +59,6 @@ public static void writeLogger(Exception e){
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-
     }
 
 
@@ -90,7 +89,6 @@ public static void writeLogger(Exception e){
 //                    LoggerClass loggerClass = new LoggerClass();
 //                    loggerClass.writeToFile(e);
                     writeLogger(e);
-
 //                    END TODO
                 }
 
@@ -240,15 +238,9 @@ public static void writeLogger(Exception e){
 //            st.setString(2, title);
 //            st.setString(3, status);
 //            st.setString(4, id);
-
-
 //          TODO check if id exists in database
 //            Statement stmt = connection.createStatement();
-
-
 //            TODO
-
-
 //            st.executeUpdate();
 //            st.close();
             connection.close();
@@ -256,7 +248,6 @@ public static void writeLogger(Exception e){
         } catch (Exception e) {
 //            e.printStackTrace();
             writeLogger(e);
-
         }
     }
 
@@ -274,14 +265,32 @@ public static void writeLogger(Exception e){
         } catch (Exception e) {
 //            e.printStackTrace();
             writeLogger(e);
-
         }
     }
+
+
+    //    TODO
+//    public static void updateBookAuthor(String author,String id) {
+//        try {
+//            Connection connect = DriverManager.getConnection(host, username, passwordServer);
+//            String sql = "UPDATE  test_db set author=? where id=  ?";
+//            PreparedStatement st = connect.prepareStatement(sql);
+//            st.setString(1, author);
+//            st.setString(2, id);
+//            st.executeUpdate();
+//            connect.close();
+//            st.close();
+//        } catch (Exception e) {
+//            writeLogger(e);
+//        }
+//    }
+//    TODO
+
 
     public static void connectToBorrowTableDB(String borrowUsername, String bookId) {
         try {
             Connection connect = DriverManager.getConnection(host, username, passwordServer);
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO borrow_db(borrowUsername,bookId,today,borrowtime)VALUES(?,?,getdate() ,getdate()+14)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO borrow_db(borrowUsername,bookId,today,borrowtime)VALUES(?,?,getdate(),getdate()+14)");
             statement.setString(1, borrowUsername);
             statement.setString(2, bookId);
             statement.executeUpdate();
@@ -293,6 +302,28 @@ public static void writeLogger(Exception e){
 
         }
     }
+
+
+//    CODE FOR DELETE USER AND BOOK
+
+
+    //delete user and book from borrow_db when user returns the book
+    public static void deleteUserAndBorrowedBook(String bookId) {
+        try {
+            Connection connection = DriverManager.getConnection(host, username, passwordServer);
+            PreparedStatement st = connection.prepareStatement("DELETE FROM borrow_db WHERE bookId=?");
+            st.setString(1, bookId);
+            st.executeUpdate();
+            connection.close();
+
+        } catch (Exception e) {
+//            e.printStackTrace();
+            writeLogger(e);
+
+        }
+    }
+//    TODO
+
 
     public static void main(String args[]) {
     }

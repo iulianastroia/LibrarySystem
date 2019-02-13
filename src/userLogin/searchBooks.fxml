@@ -8,15 +8,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userLogin.SearchBook">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userLogin.SearchBook">
    <children>
       <HBox fx:id="hBox" alignment="CENTER_RIGHT" layoutX="-4.0" layoutY="-3.0" prefHeight="299.0" prefWidth="512.0" style="-fx-background-color: #546AFF;">
          <children>
-            <VBox alignment="CENTER" prefHeight="299.0" prefWidth="274.0">
+            <VBox alignment="CENTER" prefHeight="299.0" prefWidth="272.0">
                <children>
                   <Label text="Search books by title or by author" />
-                  <TextField fx:id="bookTitleInput" onAction="#loadBookInfo" />
+                  <TextField fx:id="bookTitleInput" onKeyReleased="#loadBookInfo" />
                   <Button mnemonicParsing="false" onAction="#borrowBook" text="Borrow Book" />
+                  <Button mnemonicParsing="false" onAction="#showUserBorrowedBooks" prefHeight="31.0" prefWidth="108.0" text="My books" />
                </children></VBox>
             <VBox alignment="CENTER" prefHeight="176.0" prefWidth="217.0">
                <children>

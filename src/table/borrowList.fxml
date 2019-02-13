@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane stylesheets="/appearance/TableAppearance.css" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="table.BorrowListController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="600.0" stylesheets="/appearance/TableAppearance.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="table.BorrowListController">
     <children>
-        <TableView fx:id="tableView" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TableView fx:id="tableView" prefHeight="403.0" prefWidth="600.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columns>
                 <TableColumn fx:id="borrowUsername" prefWidth="75.0" text="Username" />
                 <TableColumn fx:id="bookId" prefWidth="75.0" text="Book ID" />
@@ -18,5 +18,6 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
+      <Button layoutX="417.0" layoutY="407.0" mnemonicParsing="false" onAction="#deleteUserAndBook" prefHeight="31.0" prefWidth="169.0" stylesheets="/appearance/ButtonsAppearance.css" text="Return selected book" />
     </children>
 </AnchorPane>

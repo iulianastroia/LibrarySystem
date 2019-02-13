@@ -39,6 +39,7 @@ public class UserLogin implements Initializable {
     @FXML
     AnchorPane anchorPane;
     WriteToMySql writeToMySql;
+    static String userNameForBorrow;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,7 +47,7 @@ public class UserLogin implements Initializable {
     }
 
     public void loginAction(ActionEvent actionEvent) throws Exception {
-
+        userNameForBorrow = userId.getText();
         String user = userId.getText();
         String pass = passId.getText();
 
@@ -66,7 +67,7 @@ public class UserLogin implements Initializable {
     }
 
     public void backButton(ActionEvent actionEvent) throws IOException {
-        LoginController loginController=new LoginController();
+        LoginController loginController = new LoginController();
         loginController.goBackToUserOrAdmin();
     }
 }

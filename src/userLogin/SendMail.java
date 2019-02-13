@@ -15,6 +15,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+import static database.WriteToMySql.writeLogger;
 import static login.LoginController.alert;
 
 public class SendMail implements Initializable {
@@ -30,25 +31,21 @@ public class SendMail implements Initializable {
     //    get user and pass from user database
     private static void getTableEntry(String email) {
         try {
-//            WriteToMySql.connection();
             Connection conn = DriverManager.getConnection(WriteToMySql.host, WriteToMySql.username, WriteToMySql.passwordServer);
-
             PreparedStatement preparedStatement = (PreparedStatement) conn.prepareStatement("SELECT * FROM user_db WHERE email=?");
-
             preparedStatement.setString(1, email);
-
             ResultSet rs = preparedStatement.executeQuery();
 //            System.out.println(preparedStatement.toString());
             while (rs.next()) {
                 pass = rs.getString("password");
 //                System.out.println("Pass is: " + pass);
                 user = rs.getString("username");
-
             }
-
+            conn.close();
+            preparedStatement.close();
+            rs.close();
         } catch (Exception e) {
-            System.err.println("Got an exception at reading the database table! ");
-            System.err.println(e.getMessage());
+            writeLogger(e);
         }
     }
 

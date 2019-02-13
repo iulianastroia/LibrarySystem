@@ -113,26 +113,26 @@ public class BookController implements Initializable {
         window.Window.showWindow(aboutLabel, projectIcon);
     }
 
-    public void updateAction(ActionEvent actionEvent) {
-        WriteToMySql.updateBooks(id.getText(), author.getText(), title.getText(), status.getText());
-        if (id.getText().isEmpty())
-            WriteToMySql.alert("Write something into id field");
-        else if (title.getText().isEmpty() && author.getText().isEmpty() && status.getText().isEmpty()) {
-            WriteToMySql.alert("Cannot update book! Change some fields. :)");
-        } else if (title.getText().isEmpty() || author.getText().isEmpty() || status.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-
-//            Label labelWarning = new Label();
-            alert.setContentText("You might want to update the other fields, too. They are currently empty.");
-            alert.showAndWait();
-//            Window.showWindow(labelWarning, projectIcon);
-        } else {
-//            TODO update book if id is existent!
-            Label labelUpdate = new Label("Book with id \"" + id.getText() + "\" updated successfully.");
-            Window.showWindow(labelUpdate, projectIcon);
-        }
-    }
+//    public void updateAction(ActionEvent actionEvent) {
+//        WriteToMySql.updateBooks(id.getText(), author.getText(), title.getText(), status.getText());
+//        if (id.getText().isEmpty())
+//            WriteToMySql.alert("Write something into id field");
+//        else if (title.getText().isEmpty() && author.getText().isEmpty() && status.getText().isEmpty()) {
+//            WriteToMySql.alert("Cannot update book! Change some fields. :)");
+//        } else if (title.getText().isEmpty() || author.getText().isEmpty() || status.getText().isEmpty()) {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+////            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+//
+////            Label labelWarning = new Label();
+//            alert.setContentText("You might want to update the other fields, too. They are currently empty.");
+//            alert.showAndWait();
+////            Window.showWindow(labelWarning, projectIcon);
+//        } else {
+////            TODO update book if id is existent!
+//            Label labelUpdate = new Label("Book with id \"" + id.getText() + "\" updated successfully.");
+//            Window.showWindow(labelUpdate, projectIcon);
+//        }
+//    }
 
     public void deleteAction(ActionEvent actionEvent) {
 
@@ -164,6 +164,8 @@ public class BookController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/table/borrowList.fxml"));
         LoginMain.setStage(stage, root);
+
+
 
 
     }
