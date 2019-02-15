@@ -1,4 +1,8 @@
-Jan 28, 2019 8:03:38 PM logger.LoggerClass writeLog
-INFO: javafx.fxml.LoadException: Error resolving onAction='#loadBookInfo', either the event handler is not in the Namespace or there is an error in the script.
-/D:/facultate/LibraryProjectContinuare/out/production/LibraryProjectContinuare/userLogin/searchBooks.fxml:18
-
+Feb 15, 2019 4:39:45 PM logger.LoggerClass writeLog
+INFO: com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near 'LIMIT'.
+Feb 15, 2019 4:39:45 PM logger.LoggerClass writeLog
+INFO: com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near 'LIMIT'.
+Feb 15, 2019 4:39:46 PM logger.LoggerClass writeLog
+INFO: com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near 'LIMIT'.
+Feb 15, 2019 4:39:46 PM logger.LoggerClass writeLog
+INFO: com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax near 'LIMIT'.

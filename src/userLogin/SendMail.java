@@ -7,6 +7,7 @@ import database.WriteToMySql;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 import login.LoginController;
 import login.LoginMain;
 
@@ -27,6 +28,9 @@ public class SendMail implements Initializable {
     JFXTextArea textId;
     private static String pass;
     private static String user;
+
+    @FXML
+    JFXButton backButton;
 
     //    get user and pass from user database
     private static void getTableEntry(String email) {
@@ -72,8 +76,9 @@ public class SendMail implements Initializable {
     }
 
     public void backButton(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
         LoginController loginController = new LoginController();
-
         LoginMain.stage.close();
         loginController.goBackToUserOrAdmin();
 

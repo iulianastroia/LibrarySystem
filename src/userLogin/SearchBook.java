@@ -1,5 +1,6 @@
 package userLogin;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.effects.JFXDepthManager;
 import database.WriteToMySql;
 import javafx.event.ActionEvent;
@@ -12,16 +13,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import login.LoginController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static database.WriteToMySql.writeLogger;
 
@@ -48,8 +49,10 @@ public class SearchBook implements Initializable {
     //list of book titles for each user
     protected static List<String> listOfBookTitles = new ArrayList<>();
 
-//    @FXML
-//    public static TextField borrowedBooksLabel;
+
+    @FXML
+    JFXButton backButton;
+
 
     //used to find if of book from borrow_db
     private static String bookId;
@@ -148,7 +151,11 @@ public class SearchBook implements Initializable {
 //            if user has already borrowed books from the library
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Borrowed books");
-            alert.setContentText("Your current borrowed books are: " + listOfBookTitles);
+            Set<String> setOfBookTitles = new LinkedHashSet<>(listOfBookTitles);
+
+            alert.setContentText("Your current borrowed books are: " + setOfBookTitles);
+
+
             alert.showAndWait();
         }
     }
@@ -179,8 +186,10 @@ public class SearchBook implements Initializable {
             preparedStatement.setString(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                titleFromDataBase = rs.getString("title");
-                listOfBookTitles.add(titleFromDataBase);
+                {
+                    titleFromDataBase = rs.getString("title");
+                    listOfBookTitles.add(titleFromDataBase);
+                }
             }
             conn.close();
             preparedStatement.close();
@@ -191,5 +200,11 @@ public class SearchBook implements Initializable {
     }
 
 
+    public void backButton(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
+        LoginController loginController = new LoginController();
+        loginController.goBackToUserOrAdmin();
+    }
 }
 

@@ -19,7 +19,6 @@
       <JFXButton fx:id="cancelButton" layoutX="119.0" layoutY="333.0" onAction="#cancelAction" prefHeight="35.0" prefWidth="132.0" stylesheets="/appearance/ButtonsAppearance.css" text="Cancel" />
       <JFXButton fx:id="registerButton" layoutX="119.0" layoutY="263.0" onAction="#registerAction" prefHeight="35.0" prefWidth="132.0" stylesheets="/appearance/ButtonsAppearance.css" text="Register" />
       <JFXButton fx:id="loginButton" layoutX="119.0" layoutY="298.0" onAction="#loginAction" prefHeight="35.0" prefWidth="132.0" stylesheets="/appearance/ButtonsAppearance.css" text="Login" />
-      <!--<Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" stylesheets="/appearance/ButtonsAppearance.css" text="Go back" />-->
       <JFXButton fx:id="backButton" layoutY="359.0" mnemonicParsing="false" onAction="#backButton" prefHeight="31.0" prefWidth="53.0" text="Back" />
    </children>
 </AnchorPane>

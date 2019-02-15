@@ -1,5 +1,6 @@
 package userLogin;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import database.WriteToMySql;
 import javafx.event.ActionEvent;
@@ -30,6 +31,8 @@ public class UserRegister implements Initializable {
     @FXML
     JFXTextArea userId;
 
+    @FXML
+    JFXButton backButton;
     @FXML
     JFXTextArea phoneId;
     @FXML
@@ -81,6 +84,8 @@ public class UserRegister implements Initializable {
     }
 
     public void backButton(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
         LoginController loginController=new LoginController();
         loginController.goBackToUserOrAdmin();
     }
